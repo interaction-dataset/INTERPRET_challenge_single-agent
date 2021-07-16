@@ -50,6 +50,9 @@ For a vehicle in a modality of a case, if its prediction at the final timestamp 
 
 If the lateral or longitudinal distance between the prediction and ground truth at the last timestamp is larger than the cooresponding threshold, this vehicle in this modality of this case is considered as 'miss' - 1. If all modalities of a case are 'miss', we consider the case as 'miss' - 1. Miss Rate (miss rate) calculates the ratio of 'miss' cases over all cases.
 
+# Note
+For guidance of **INTERPRET Multi-Agent Prediction in the ICAPS21/ICCV21 Stage**, please visit https://github.com/interaction-dataset/INTERPRET_challenge_multi-agent.
+The key difference between the single agent and multi-agent prediction is that: the single agent prediction only outputs one agent's future motion in the scene. In a case of multi-agent prediction, we generate a case in the single-agent prediction for each fully observable vehicle. As a result, the single-agent prediction evaluates model's performance on all agents' marginal multi-modal distribution while the multi-agent prediction on all agents' joint multi-modal distribution.
 
 ## Acknowledgement
 Some metrics are inspired by the [Waymo Open Dataset - Motion Prediction Challenge](https://waymo.com/open/challenges/2021/motion-prediction/) and [Argoverse Motion Forecasting Competition](https://eval.ai/web/challenges/challenge-page/454/overview).
