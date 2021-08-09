@@ -13,7 +13,7 @@ The following are the changed parts:
 
 For each scenario X like (DR_CHN_Merging_ZS0), there should be a single file 'X_sub.csv'. The following columns would be used during the evaluation: case_id, track_id, frame_id, timestamp_ms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6. The order of rows and columns could be arbitrary. 'xi, yi' represents the predicted coordinate for the vehicle 'track_id' at 'timestamp_ms' in the modality i. Up to 6 modalities would be taken into consideration. Participants could submit less than 6 modalities (like only x1, y1).
 
-Only the one vehicle in each case with the 'track_to_predict' column as 1 should has predictions for 30 timestamps. Each submission could contain up to 6 modalities where the modality with higher confidence should has smaller index. In other words, modalaity 1 has the highest confidence and modality 6 has the lowest.
+In the released data, the column “interesting agent” indicates whether a vehicle is the ego agent and the column “track_to_predict” indicates whether a vehicle is a target agent.  Only the one vehicle in each case with the 'track_to_predict' column as 1 should has predictions for 30 timestamps. Each submission could contain up to 6 modalities where the modality with higher confidence should has smaller index. In other words, modalaity 1 has the highest confidence and modality 6 has the lowest.
 
 Csv files for all scenarios should be packed into **a single zip** file for submission.
 
