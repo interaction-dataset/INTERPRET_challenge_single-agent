@@ -1,11 +1,11 @@
 
-# INTERPRET Sinlge Agent Prediction in the ICCV21 Stage
+# INTERPRET Sinlge Agent Prediction and Conditional Sinlge Agent Prediction in the ICCV21 Stage
 
-In this Single Agent Prediction tracksm, the target is to predict one target agents' coordinates and yaw in the future 3 seconds (30 frames).
+In this Single Agent Prediction tracks, the target is to predict one target agents' coordinates and yaw in the future 3 seconds (30 frames).
 
 Note that this instruction is for the **ICCV21** Stage of the INTERPRET challenge with the latest version of INTERACTION Dataset (**v1.2**). As for the guidance for the NeurIPS20 stage with the deprecated version of INTERACTION Dataset (v1.1), please check https://github.com/interaction-dataset/INTERPRET_challenge_regular_generalizability_track. However, since the v1.1 version is deprecated, we suggest participants to use the latest version of data and submit to the latest stage of competition.
 
-## Submission for Single-Agent Prediction in the ICCV21 Stage
+## Submission for Sinlge Agent Prediction and Conditional Sinlge Agent Prediction in the ICCV21 Stage
 
 Please first read [the old guideline](http://challenge.interaction-dataset.com/leader-board-introduction) for the basic information about the input data and submission. Most of them still applies.
 
@@ -22,7 +22,7 @@ Csv files for all scenarios should be packed into **a single zip** file for subm
 
 
 
-## Metrics for Single-Agent Prediction in the ICCV21 Stage
+## Metrics for Sinlge Agent Prediction and Conditional Sinlge Agent Prediction in the ICCV21 Stage
 
 All metrics are averaged over all cases of all scenarios. The ranking of the single agent prediction is based on **MR**.
 
@@ -51,7 +51,7 @@ For a vehicle in a modality of a case, if its prediction at the final timestamp 
 If the lateral or longitudinal distance between the prediction and ground truth at the last timestamp is larger than the cooresponding threshold, this vehicle in this modality of this case is considered as 'miss' - 1. If all modalities of a case are 'miss', we consider the case as 'miss' - 1. Miss Rate (miss rate) calculates the ratio of 'miss' cases over all cases.
 
 # Note
-For guidance of **INTERPRET Multi-Agent Prediction in the ICCV21 Stage**, please visit https://github.com/interaction-dataset/INTERPRET_challenge_multi-agent.
+For guidance of **INTERPRET Multi-Agent Prediction and Conditional Multi-Agent Prediction in the ICCV21 Stage**, please visit https://github.com/interaction-dataset/INTERPRET_challenge_multi-agent.
 
 
 ## Acknowledgement
