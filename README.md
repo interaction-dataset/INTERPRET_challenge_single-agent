@@ -1,7 +1,7 @@
 
 # INTERPRET Sinlge Agent Prediction in the ICCV21 Stage
 
-In this part, the input is M agents' motion information including coordinates, velocities, yaw, vehicle length and width in the observed 1 second (10 frames) as well as the cooresponding HD map. The target is to predict one target agents' coordinates and yaw in the future 3 seconds (30 frames).
+In this Single Agent Prediction tracksm, the target is to predict one target agents' coordinates and yaw in the future 3 seconds (30 frames).
 
 Note that this instruction is for the **ICCV21** Stage of the INTERPRET challenge with the latest version of INTERACTION Dataset (**v1.2**). As for the guidance for the NeurIPS20 stage with the deprecated version of INTERACTION Dataset (v1.1), please check https://github.com/interaction-dataset/INTERPRET_challenge_regular_generalizability_track. However, since the v1.1 version is deprecated, we suggest participants to use the latest version of data and submit to the latest stage of competition.
 
