@@ -5,17 +5,55 @@ In the Sinlge Agent Prediction and Conditional Sinlge Agent Prediction track, th
 
 Note that this instruction is for the **ICCV21** Stage of the INTERPRET challenge with the latest version of INTERACTION Dataset (**v1.2**). As for the guidance for the NeurIPS20 stage with the deprecated version of INTERACTION Dataset (v1.1), please check https://github.com/interaction-dataset/INTERPRET_challenge_regular_generalizability_track. However, since the v1.1 version is deprecated, we suggest participants to use the latest version of data and submit to the latest stage of competition.
 
+## Submission Policy
+The provided training data of the INTERPRET challenge may be used for learning the parameters of the algorithms. The test data should be used strictly for reporting the final results compared to competitors on the INTERPRET website - it must not be used in any way to train or tune the systems, for example by evaluating multiple parameters or feature choices and reporting the best results obtained. We have provided a suggested split between the training and validation sets using the INTERACTION drone dataset, and the participants can choose to use that. The tuned algorithms should then be run only once on the test data.
+
+The evaluation server may not be used for parameter tuning. We allow participants to upload the results of their algorithm onto the server and perform all other experiments on the training and validation set.
+
+The trajectory prediction results will be evaluated automatically and participants can decide whether each evaluation result is public in their submission log pages. The default is non-public.
+
+
+## Data Format
+
+For each csv file in the released "train" and "val" folder, the csv's name represents the scene name.  Each csv file include multiple cases and each case includes all agents' states in 4 seconds. Note that some agents may not be fully visible in the 4 seconds. In the csv file, each row represents a agent's state at a timestamp of a case and each columns means:
+
+case id: the id of the case under this driving scenario.
+
+track_id: the agent id.
+
+frame_id: the id of the current frame.
+
+timestamp_ms: the time instant of the corresponding frame in ms.
+
+agent_type: the type of the agent. It is either "car" or "pedestrian/bicycle".
+
+x: the x position of the agent. Unit: m. The coordinate system of the agent is a relative coordinate system with respect to some predefined points in our recorded scenes.
+
+y: the x position of the agent. Unit: m. The coordinate system of the agent is a relative coordinate system with respect to some predefined points in our recorded scenes.
+
+vx: the velocity in the x-direction of the agent. Unit: m/s.
+
+vy: the velocity in the y-direction of the agent. Unit: m/s.
+
+psi_rad: the yaw angle of the agent if the agent is a vehicle. If the agent is a pedestrian, then this column is empty. Unit: rad.
+
+length: the length(size) of the agent if the agent is a vehicle. If the agent is a pedestrian, then this column is empty. Unit: m.
+
+width: the width(size) of the agent if the agent is a vehicle. If the agent is a pedestrian, then this column is empty. Unit: m.
+
+
+For each csv file in the released "test_single-agent" and "test_conditional-single-agent" folder, since they are the input data of the competition, there are the following differences:
+
+1. There are only 1 second observation of each case. The future 3 seconds is the prediction horizon.
+ 
+2. Additional columns:  "interesting agent" indicates whether a vehicle is the ego agent of the case where 0 means no and 1 means yes. Each case only has one "interesting agent".  "track_to_predict" indicates whether a vehicle is a target agent for the trajectory prediction. All target agents are guaranteed to be fully observable in the 1+3 seconds of the raw data. Only vehicles are selected as the ego agent or the target agent.  Regarding how the columns are labeled please check the [main page of the competition](http://challenge.interaction-dataset.com/prediction-challenge/intro). Participants are free to decide the strategy of setting "interesting agent" and  "track_to_predict" in the train/val data.
+
 ## Submission for Sinlge Agent Prediction and Conditional Sinlge Agent Prediction in the ICCV21 Stage
 
-Please first read [the old guideline](http://challenge.interaction-dataset.com/leader-board-introduction) for the basic information about the input data and submission. Most of them still applies.
 
-The following are the changed parts:
+For each scenario X like (DR_CHN_Merging_ZS0), there should be a single file 'X_sub.csv'. The following columns would be used during the evaluation: case_id, track_id, frame_id, timestamp_ms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6. Other columns would be ignored. The order of rows and columns could be arbitrary. 'xi, yi' represents the predicted coordinate for the vehicle 'track_id' at 'timestamp_ms' in the modality i. Up to 6 modalities would be taken into consideration. Participants could submit less than 6 modalities (like only x1, y1). Each submission could contain up to 6 modalities where the modality with higher confidence should has smaller index. In other words, modalaity 1 has the highest confidence and modality 6 has the lowest.
 
-For each scenario X like (DR_CHN_Merging_ZS0), there should be a single file 'X_sub.csv'. The following columns would be used during the evaluation: case_id, track_id, frame_id, timestamp_ms, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6. The order of rows and columns could be arbitrary. 'xi, yi' represents the predicted coordinate for the vehicle 'track_id' at 'timestamp_ms' in the modality i. Up to 6 modalities would be taken into consideration. Participants could submit less than 6 modalities (like only x1, y1).
-
-In the released data, the column “interesting agent” indicates whether a vehicle is the ego agent and the column “track_to_predict” indicates whether a vehicle is a target agent.  Only the one vehicle in each case with the 'track_to_predict' column as 1 should has predictions for 30 timestamps. Each submission could contain up to 6 modalities where the modality with higher confidence should has smaller index. In other words, modalaity 1 has the highest confidence and modality 6 has the lowest.
-
-Csv files for all scenarios should be packed into **a single zip** file for submission.
+Csv files for all scenarios of a track should be packed into **a single zip** file for submission.
 
 [DR_CHN_Merging_ZS0_sub.csv](https://github.com/interaction-dataset/INTERPRET_challenge_single-agent/blob/main/DR_CHN_Merging_ZS0_sub.csv) is an example for submission for the scenario DR_CHN_Merging_ZS0. Note that this example file only contains the first 3 cases with 4 modalities in each case and the input is random number.
 
