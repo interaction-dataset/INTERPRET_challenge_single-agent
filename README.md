@@ -1,5 +1,5 @@
 
-# INTERPRET Sinlge Agent Prediction and Conditional Sinlge Agent Prediction in the ICCV21 Stage
+# INTERPRET Single Agent Prediction and Conditional Single Agent Prediction in the ICCV21 Stage
 
 In the Sinlge Agent Prediction and Conditional Sinlge Agent Prediction track, the target is to predict one target agents' **coordinates** in the future 3 seconds (30 frames).
 
